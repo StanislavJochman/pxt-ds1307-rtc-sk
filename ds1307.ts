@@ -10,17 +10,17 @@
 //% weight=0 color=#f3555a icon="\uf017" block="RTC1307"
 namespace RTC_DS1307 {
     export enum TimeType {
-        //% block="second" enumval=0
+        //% block="sekundy" enumval=0
         SECOND,
-        //% block="minute" enumval=1
+        //% block="minúty" enumval=1
         MINUTE,
-        //% block="hour" enumval=2
+        //% block="hodiny" enumval=2
         HOUR,
-        //% block="day" enumval=3
+        //% block="dni" enumval=3
         DAY,
-        //% block="month" enumval=4
+        //% block="mesiace" enumval=4
         MONTH,
-        //% block="year" enumval=5
+        //% block="roky" enumval=5
         YEAR
     }
 
@@ -72,7 +72,7 @@ namespace RTC_DS1307 {
      * set time
      */
     //% blockId="DS1307_SET_TIME" 
-    //% block="set %datatype |%data"
+    //% block="Nastav %datatype |%data"
     export function setTime(datatype: TimeType, data: number): void {
         switch (datatype) {
             case 0:
@@ -150,7 +150,7 @@ namespace RTC_DS1307 {
      * 6 means Saturday
      */
     //% blockId="DS1307_GET_WEEKDAY" 
-    //% block="weekday"
+    //% block="Deň v týždni"
     export function getWeekday(): number {
         // (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400) mod 7
         let d = HexToDec(getReg(DS1307_REG_DAY))
@@ -188,7 +188,7 @@ namespace RTC_DS1307 {
      * @param second is the Second will be set, eg: 19
      */
     //% blockId="DS1307_SET_DATETIME" 
-    //% block="set year %year|    month %month|      day %day|     hour %hour|   minute %minute|   second %second"
+    //% block="Nastav rok %year|    mesiac %month|      deň %day|     hodiny %hour|   minúty %minute|   sekundy %second"
     export function DateTime(year: number, month: number, day: number, hour: number, minute: number, second: number): void {
         let buf = pins.createBuffer(8);
         buf[0] = DS1307_REG_SECOND;
